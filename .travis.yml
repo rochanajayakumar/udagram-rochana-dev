@@ -19,13 +19,16 @@ script:
   - docker build -t udagram-feed udagram-api-feed/
   - docker build -t udagram-user udagram-api-users/
   - docker build -t udagram-front udagram-frontend/
+  - docker build -t udagram-reverse udagram-reverse/
   - docker tag udagram-feed rochanajayakumar/udagram/udagram-feed:feed
   - docker tag udagram-user rochanajayakumar/udagram/udagram-user:user
   - docker tag udagram-front rochanajayakumar/udagram/udagram-front:front
+  - docker tag udagram-front rochanajayakumar/udagram/udagram-reverse:reverse 
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push rochanajayakumar/udagram/udagram-feed
   - docker push rochanajayakumar/udagram/udagram-user
   - docker push rochanajayakumar/udagram/udagram-front
+  - docker push rochanajayakumar/udagram/udagram-reverse
 
