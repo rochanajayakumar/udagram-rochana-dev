@@ -2,22 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    service: reverseproxy
-  name: reverseproxy
+    service: frontend
+  name: frontend
 spec:
   replicas: 1
   selector: 
     matchLabels: 
-      app: reverseproxy
+      app: frontend
   template:
     metadata:
       labels:
-        app: reverseproxy
-        service: reverseproxy
+        app: frontend
+        service: frontend
     spec:
       containers:
-      - image: rochanajayakumar/udagram:reverse
-        name: reverseproxy
+      - image: rochanajayakumar/udagram:frontend
+        name: frontend
         imagePullPolicy: Always          
         resources:
           requests:
