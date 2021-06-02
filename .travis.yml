@@ -23,7 +23,7 @@ script:
   - docker tag udagram-feed rochanajayakumar/udagram/udagram-feed:feed
   - docker tag udagram-user rochanajayakumar/udagram/udagram-user:user
   - docker tag udagram-front rochanajayakumar/udagram/udagram-front:front
-  - docker tag udagram-front rochanajayakumar/udagram/udagram-reverse:reverse 
+  - docker tag udagram-reverse rochanajayakumar/udagram/udagram-reverse:reverse 
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
