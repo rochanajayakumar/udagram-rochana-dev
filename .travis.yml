@@ -16,19 +16,19 @@ before_script:
 script:
   - docker --version # print the version for logging
   - docker --version # print the version for logging
-  - docker build -t udagram-feed udagram-api-feed/
-  - docker build -t udagram-user udagram-api-users/
-  - docker build -t udagram-front udagram-frontend/
-  - docker build -t udagram-reverse udagram-reverse/
-  - docker tag udagram-feed rochanajayakumar/udagram/udagram-feed:feed
-  - docker tag udagram-user rochanajayakumar/udagram/udagram-user:user
-  - docker tag udagram-front rochanajayakumar/udagram/udagram-front:front
-  - docker tag udagram-reverse rochanajayakumar/udagram/udagram-reverse:reverse 
+  - docker build -t udagram udagram-api-feed/
+  - docker build -t udagram udagram-api-users/
+  - docker build -t udagram udagram-frontend/
+  - docker build -t udagram udagram-reverse/
+  - docker tag udagram rochanajayakumar/udagram:feed
+  - docker tag udagram rochanajayakumar/udagram:user
+  - docker tag udagram rochanajayakumar/udagram:front
+  - docker tag udagram rochanajayakumar/udagram:reverse 
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push rochanajayakumar/udagram/udagram-feed
-  - docker push rochanajayakumar/udagram/udagram-user
-  - docker push rochanajayakumar/udagram/udagram-front
-  - docker push rochanajayakumar/udagram/udagram-reverse
+  - docker push rochanajayakumar/udagram:feed
+  - docker push rochanajayakumar/udagram:user
+  - docker push rochanajayakumar/udagram:front
+  - docker push rochanajayakumar/udagram:reverse
 
